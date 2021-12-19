@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <h1>L2A Countdown</h1>
-    <div>
+    <h1>London to Amsterdam Countdown</h1>
+    <h1>
       {{ countDown }}
-    </div>
+    </h1>
   </div>
 </template>
 
