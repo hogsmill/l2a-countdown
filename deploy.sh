@@ -29,13 +29,12 @@ do
     APP="${APP}-${ROUTE}"
   fi
   APPNAME=$MAINNAME
-  let PORT=$BASEPORT+$i
 
   echo "------------------------------------------------"
   if [ -z "$APPNAME" ]; then
-    echo "Installing $APP ($PORT)"
+    echo "Installing $APP"
   else
-    echo "Installing $APP ($PORT, $APPNAME)"
+    echo "Installing $APP ($APPNAME)"
   fi
   echo "------------------------------------------------"
 
