@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <h1>London to Amsterdam Countdown</h1>
-    <h1>
+    <h2>
       {{ countDown }}
-    </h1>
+    </h2>
   </div>
 </template>
 
@@ -33,7 +33,9 @@ export default {
 
       let delta = Math.abs(l2a - now) / 1000
 
-      const days = Math.floor(delta / 86400)
+      let days = Math.floor(delta / 86400)
+      const weeks = Math.floor(days / 7)
+      days -= weeks * 7
       delta -= days * 86400
 
       const hours = Math.floor(delta / 3600) % 24
@@ -45,14 +47,15 @@ export default {
       const seconds = Math.floor(delta % 60)
 
       return [
+        this.format(weeks, 'week'),
         this.format(days, 'day'),
-        this.format(hours, 'hours'),
+        this.format(hours, 'hour'),
         this.format(minutes, 'minute'),
         this.format(seconds, 'second')
       ].join(', ')
     },
     format(n, unit) {
-      const label = n < 10 ? unit : unit + 's'
+      const label = n == 1 ? unit : unit + 's'
       return n + ' ' + label
     }
 
@@ -64,5 +67,11 @@ export default {
 
   h1 {
     margin-top: 24px;
+    font-size: 4.0rem;
+  }
+
+  h2 {
+    margin-top: 24px;
+    font-size: 3.5rem;
   }
 </style>
