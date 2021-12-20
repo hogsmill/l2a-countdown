@@ -85,4 +85,14 @@ export default {
     }
   }
 
+  @media only screen and (max-device-width: 650px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
+
 </style>
