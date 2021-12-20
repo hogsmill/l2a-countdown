@@ -77,11 +77,11 @@ export default {
 
   @media only screen and (max-device-width: 666px) {
     h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
   }
 
