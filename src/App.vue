@@ -75,7 +75,7 @@ export default {
     font-size: 3.5rem;
   }
 
-  @media only screen and (max-device-width: 667px) {
+  @media only screen and (max-device-width: 666px) {
     h1 {
       font-size: 3.5rem;
     }
