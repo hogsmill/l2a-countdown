@@ -74,4 +74,15 @@ export default {
     margin-top: 24px;
     font-size: 3.5rem;
   }
+
+  @media only screen and (max-device-width: 667px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
 </style>
