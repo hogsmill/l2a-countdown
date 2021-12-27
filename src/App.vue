@@ -4,6 +4,9 @@
     <h2>
       {{ countDown }}
     </h2>
+    <h3>
+      (That means {{ getNumberOfSundays() }})
+    </h3>
   </div>
 </template>
 
@@ -17,7 +20,8 @@ export default {
   name: 'App',
   data() {
     return {
-      countDown: 0
+      countDown: 0,
+      l2a: new Date('2022-04-04')
     }
   },
   created() {
@@ -28,10 +32,9 @@ export default {
   },
   methods: {
     toGo() {
-      const l2a = new Date('2022-04-02')
       const now = new Date()
 
-      let delta = Math.abs(l2a - now) / 1000
+      let delta = Math.abs(this.l2a - now) / 1000
 
       let days = Math.floor(delta / 86400)
       const weeks = Math.floor(days / 7)
@@ -54,9 +57,27 @@ export default {
         this.format(seconds, 'second')
       ].join(', ')
     },
+    getNumberOfSundays() {
+      const now = new Date()
+      const sundays = this.getNumberOfWeekDays(now, this.l2a, 0)
+      const label = sundays == 1 ? 'Sunday' : 'Sundays'
+      return sundays + ' ' + label
+    },
+    getNumberOfWeekDays(start, end, dayNum){
+      // Sunday's num is 0 with Date.prototype.getDay
+      dayNum = dayNum || 0
+      // Calculate the number of days between start and end.
+      const daysInInterval = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24))
+      // Calculate the nb of days before the next target day (e.g. next Sunday after start)
+      const toNextTargetDay = (7 + dayNum - start.getDay()) % 7
+      // Calculate the number of days from the first target day to the end.
+      const daysFromFirstTargetDay = Math.max(daysInInterval - toNextTargetDay, 0)
+      // Calculate the number of weeks (even partial) from the first target day to the end
+      return Math.ceil(daysFromFirstTargetDay / 7)
+    },
     format(n, unit) {
       const label = n == 1 ? unit : unit + 's'
-      return n + ' ' + label
+      return n + ' ' + label + '!'
     }
 
   }
@@ -73,6 +94,13 @@ export default {
   h2 {
     margin-top: 24px;
     font-size: 3.5rem;
+  }
+
+  h3 {
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 24px;
+    color: darkred;
   }
 
   @media only screen and (max-device-width: 666px) {
