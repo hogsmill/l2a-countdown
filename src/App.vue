@@ -61,7 +61,7 @@ export default {
       const now = new Date()
       const sundays = this.getNumberOfWeekDays(now, this.l2a, 0)
       const label = sundays == 1 ? 'Sunday' : 'Sundays'
-      return sundays + ' ' + label
+      return sundays + ' ' + label + '!'
     },
     getNumberOfWeekDays(start, end, dayNum){
       // Sunday's num is 0 with Date.prototype.getDay
@@ -77,7 +77,7 @@ export default {
     },
     format(n, unit) {
       const label = n == 1 ? unit : unit + 's'
-      return n + ' ' + label + '!'
+      return n + ' ' + label
     }
 
   }
