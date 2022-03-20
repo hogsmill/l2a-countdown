@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       countDown: 0,
-      l2a: new Date('2022-04-04')
+      l2a: new Date('2022-04-02')
     }
   },
   created() {
@@ -59,7 +59,7 @@ export default {
     },
     getNumberOfSundays() {
       const now = new Date()
-      const sundays = this.getNumberOfWeekDays(now, this.l2a, 0) - 1
+      const sundays = this.getNumberOfWeekDays(now, this.l2a, 0)
       const label = sundays == 1 ? 'Sunday' : 'Sundays'
       return sundays + ' ' + label + '!'
     },
