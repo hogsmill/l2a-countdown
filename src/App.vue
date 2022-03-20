@@ -59,7 +59,7 @@ export default {
     },
     getNumberOfSundays() {
       const now = new Date()
-      const sundays = this.getNumberOfWeekDays(now, this.l2a, 0)
+      const sundays = this.getNumberOfWeekDays(now, this.l2a, 0) - 1
       const label = sundays == 1 ? 'Sunday' : 'Sundays'
       return sundays + ' ' + label + '!'
     },
